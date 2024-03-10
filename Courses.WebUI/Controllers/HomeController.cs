@@ -13,12 +13,12 @@ namespace Courses.WebUI.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Privacy()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Terms()
         {
             return View();
         }
