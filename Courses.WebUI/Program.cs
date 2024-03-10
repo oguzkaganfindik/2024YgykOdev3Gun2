@@ -27,7 +27,7 @@ app.UseStaticFiles();
 
 app.MapControllerRoute(
     name: "Default",
-    pattern: "{Controller=Home}/{Action=Index}/{id?}"
+    pattern: "{Controller=Courses}/{Action=Index}/{id?}"
     );
 
 app.Run();
