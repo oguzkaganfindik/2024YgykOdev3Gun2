@@ -1,0 +1,45 @@
+﻿<div class="row search">
+
+    <div class="pull-left course-filter">
+        <div class="filter-label">
+            Kategori:
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-default btn-lg btn-course-filter dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" aria-controls="filter-dropdown">
+                Tümü <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" id="filter-dropdown">
+                <li><a href="/courses">Tümü</a></li>
+                <li><a href="/courses/category/programlama">Programlama (1)</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="pull-left course-filter">
+        <div class="filter-label">
+            Eğitmen:
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-default btn-lg btn-course-filter dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" aria-controls="courses-dropdown">
+                Tümü <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" id="courses-dropdown">
+                <li><a href="/courses">Tümü</a></li>
+                <li><a href="/courses/author/470129">Engin Demirog</a></li>
+                <li><a href="/courses/author/1710616">Halit Enes Kalaycı</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-xs-12 pull-right">
+        <form role="search" method="get" action="/courses">
+            <div class="input-group">
+                <label for="search-courses" class="sr-only">Kurs bul</label>
+                <input class="form-control search input-lg" data-list=".list" id="search-courses" name="query" placeholder="Kurs bul" type="text">
+                <span class="input-group-btn">
+                    <button aria-label="Search Courses" id="search-course-button" class="btn search btn-default btn-lg" type="submit"><i class="fa fa-search" title="Search"></i></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>

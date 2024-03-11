@@ -1,281 +1,223 @@
-﻿<div role="main" class="view-school">
-    <div class="view-directory course-directory signed-in-directory">
-        <div class="container">
-            <div class="row search">
+﻿<partial name="Partial/_SearchAllCourses" />
 
-                <div class="pull-left course-filter">
-                    <div class="filter-label">
-                        Kategori:
-                    </div>
-                    <div class="btn-group">
-                        <button class="btn btn-default btn-lg btn-course-filter dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" aria-controls="filter-dropdown">
-                            Tümü <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu" id="filter-dropdown">
-                            <li><a href="/courses">Tümü</a></li>
-                            <li><a href="/courses/category/programlama">Programlama (1)</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="pull-left course-filter">
-                    <div class="filter-label">
-                        Eğitmen:
-                    </div>
-                    <div class="btn-group">
-                        <button class="btn btn-default btn-lg btn-course-filter dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false" aria-controls="courses-dropdown">
-                            Tümü <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu" id="courses-dropdown">
-                            <li><a href="/courses">Tümü</a></li>
-                            <li><a href="/courses/author/470129">Engin Demirog</a></li>
-                            <li><a href="/courses/author/1710616">Halit Enes Kalaycı</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-xs-12 pull-right">
-                    <form role="search" method="get" action="/courses">
-                        <div class="input-group">
-                            <label for="search-courses" class="sr-only">Kurs bul</label>
-                            <input class="form-control search input-lg" data-list=".list" id="search-courses" name="query" placeholder="Kurs bul" type="text">
-                            <span class="input-group-btn">
-                                <button aria-label="Search Courses" id="search-course-button" class="btn search btn-default btn-lg" type="submit"><i class="fa fa-search" title="Search"></i></button>
-                            </span>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <div class="row course-list list">
-
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div data-course-id="1235979" data-course-url="/courses/enrolled/1235979" , class="course-listing">
-                        <div class="row">
-                            <a href="/courses/enrolled/1235979" data-role="course-box-link">
-                                <div class="col-lg-12">
-
-                                    <div class="course-box-image-container">
-                                        <img class="course-box-image" src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://www.filepicker.io/api/file/Zk7d1MdoSJ6cEShVbfd0" role="presentation" alt>
-                                    </div>
-                                    <div class="course-listing-title" role="heading" aria-level="2" title="Yazılım Geliştirici Yetiştirme Kampı (C# + ANGULAR)">
-                                        Yazılım Geliştirici Yetiştirme Kampı (C# + ANGULAR)
-                                    </div>
-
-                                    <div class="col-xs-12 hidden course-listing-enrolled" aria-hidden="true">
-                                        <div class="progressbar ">
-                                            <div class="progressbar-fill" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-labelledby="percent-complete-1235979"></div>
-                                        </div>
-                                        <p class="course-access-limit hidden">Şu tarihe kadar geçerli : <span></span></p>
-                                    </div>
-
-                                    <div class="course-listing-subtitle" title="2 ay sürecek Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız." role="heading" aria-level="3">
-                                        2 ay sürecek Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız.
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="course-listing-extra-info">
-                            <div>
-
-
-                                <img class="img-circle" src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:30,height:30/https://www.filepicker.io/api/file/GsqiGFGCRmuBuel0qqF3" alt="Engin Demirog">
-                                <span class="small course-author-name">
-                                    Engin Demirog
-                                </span>
-                            </div>
-
-                            <div class="hidden" aria-hidden="true">
-                                <div class="small course-progress ">
-                                    <span class="percentage" id="percent-complete-1235979" data-course-id="1235979">
-                                        %
-                                    </span>
-                                    <br>
-                                    TAMAMLANDI
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="small course-price" data-include-vat-price="2675534">
-                                    ÜCRETSİZ
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div data-course-id="1862827" data-course-url="/courses/enrolled/1862827" , class="course-listing">
-                        <div class="row">
-                            <a href="/courses/enrolled/1862827" data-role="course-box-link">
-                                <div class="col-lg-12">
-
-                                    <div class="course-box-image-container">
-                                        <img class="course-box-image" src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/ujZYJ3lwSOihtnbP9LsG" role="presentation" alt>
-                                    </div>
-                                    <div class="course-listing-title" role="heading" aria-level="2" title="Senior Yazılım Geliştirici Yetiştirme Kampı (.NET)">
-                                        Senior Yazılım Geliştirici Yetiştirme Kampı (.NET)
-                                    </div>
-
-                                    <div class="col-xs-12 hidden course-listing-enrolled" aria-hidden="true">
-                                        <div class="progressbar ">
-                                            <div class="progressbar-fill" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-labelledby="percent-complete-1862827"></div>
-                                        </div>
-                                        <p class="course-access-limit hidden">Şu tarihe kadar geçerli : <span></span></p>
-                                    </div>
-
-                                    <div class="course-listing-subtitle" title="Senior Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız." role="heading" aria-level="3">
-                                        Senior Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız.
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="course-listing-extra-info">
-                            <div>
-
-
-                                <img class="img-circle" src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:30,height:30/https://www.filepicker.io/api/file/GsqiGFGCRmuBuel0qqF3" alt="Engin Demirog">
-                                <span class="small course-author-name">
-                                    Engin Demirog
-                                </span>
-                            </div>
-
-                            <div class="hidden" aria-hidden="true">
-                                <div class="small course-progress ">
-                                    <span class="percentage" id="percent-complete-1862827" data-course-id="1862827">
-                                        %
-                                    </span>
-                                    <br>
-                                    TAMAMLANDI
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="small course-price" data-include-vat-price="4202878">
-                                    ÜCRETSİZ
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div data-course-id="2440064" data-course-url="/courses/enrolled/2440064" , class="course-listing">
-                        <div class="row">
-                            <a href="/courses/enrolled/2440064" data-role="course-box-link">
-                                <div class="col-lg-12">
-
-                                    <div class="course-box-image-container">
-                                        <img class="course-box-image" src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/We86Zc3xQy6FUqhyBJJc" role="presentation" alt>
-                                    </div>
-                                    <div class="course-listing-title" role="heading" aria-level="2" title="2024 Yazılım Geliştirici Yetiştirme Kampı (C#)">
-                                        2024 Yazılım Geliştirici Yetiştirme Kampı (C#)
-                                    </div>
-
-                                    <div class="col-xs-12 hidden course-listing-enrolled" aria-hidden="true">
-                                        <div class="progressbar ">
-                                            <div class="progressbar-fill" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-labelledby="percent-complete-2440064"></div>
-                                        </div>
-                                        <p class="course-access-limit hidden">Şu tarihe kadar geçerli : <span></span></p>
-                                    </div>
-
-                                    <div class="course-listing-subtitle" title="2 ay sürecek Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız." role="heading" aria-level="3">
-                                        2 ay sürecek Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız.
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="course-listing-extra-info">
-                            <div>
-
-
-                                <img class="img-circle" src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:30,height:30/https://www.filepicker.io/api/file/GsqiGFGCRmuBuel0qqF3" alt="Engin Demirog">
-                                <span class="small course-author-name">
-                                    Engin Demirog
-                                </span>
-                            </div>
-
-                            <div class="hidden" aria-hidden="true">
-                                <div class="small course-progress ">
-                                    <span class="percentage" id="percent-complete-2440064" data-course-id="2440064">
-                                        %
-                                    </span>
-                                    <br>
-                                    TAMAMLANDI
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="small course-price" data-include-vat-price="5291639">
-                                    ÜCRETSİZ
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-6 col-md-4">
-                    <div data-course-id="1240541" data-course-url="/courses/enrolled/1240541" , class="course-listing">
-                        <div class="row">
-                            <a href="/courses/enrolled/1240541" data-role="course-box-link">
-                                <div class="col-lg-12">
-
-                                    <div class="course-box-image-container">
-                                        <img class="course-box-image" src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://www.filepicker.io/api/file/BBLmG3XFTtm8XBTrzg4v" role="presentation" alt>
-                                    </div>
-                                    <div class="course-listing-title" role="heading" aria-level="2" title="Programlamaya Giriş için Temel Kurs">
-                                        Programlamaya Giriş için Temel Kurs
-                                    </div>
-
-                                    <div class="col-xs-12 hidden course-listing-enrolled" aria-hidden="true">
-                                        <div class="progressbar ">
-                                            <div class="progressbar-fill" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-labelledby="percent-complete-1240541"></div>
-                                        </div>
-                                        <p class="course-access-limit hidden">Şu tarihe kadar geçerli : <span></span></p>
-                                    </div>
-
-                                    <div class="course-listing-subtitle" title="PYTHON, JAVA, C# gibi tüm programlama dilleri için temel programlama mantığını anlaşılır örneklerle öğrenin." role="heading" aria-level="3">
-                                        PYTHON, JAVA, C# gibi tüm programlama dilleri için temel programlama mantığını anlaşılır örneklerle öğrenin.
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="course-listing-extra-info">
-                            <div>
-
-
-                                <img class="img-circle" src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:30,height:30/https://www.filepicker.io/api/file/GsqiGFGCRmuBuel0qqF3" alt="Engin Demirog">
-                                <span class="small course-author-name">
-                                    Engin Demirog
-                                </span>
-                            </div>
-
-                            <div class="hidden" aria-hidden="true">
-                                <div class="small course-progress ">
-                                    <span class="percentage" id="percent-complete-1240541" data-course-id="1240541">
-                                        %
-                                    </span>
-                                    <br>
-                                    TAMAMLANDI
-                                </div>
-                            </div>
-
-                            <div>
-                                <div class="small course-price" data-include-vat-price="2687976">
-                                    ÜCRETSİZ
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="row course-list list">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <div data-course-id="1235979" data-course-url="/courses/enrolled/1235979" , class="course-listing">
             <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <center>
-                    </center>
+                <a href="/courses/enrolled/1235979" data-role="course-box-link">
+                    <div class="col-lg-12">
+
+                        <div class="course-box-image-container">
+                            <img class="course-box-image" src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://www.filepicker.io/api/file/Zk7d1MdoSJ6cEShVbfd0" role="presentation">
+                        </div>
+                        <div class="course-listing-title" role="heading" aria-level="2" title="Yazılım Geliştirici Yetiştirme Kampı (C# + ANGULAR)">
+                            Yazılım Geliştirici Yetiştirme Kampı (C# + ANGULAR)
+                        </div>
+
+                        <div class="col-xs-12 hidden course-listing-enrolled" aria-hidden="true">
+                            <div class="progressbar ">
+                                <div class="progressbar-fill" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-labelledby="percent-complete-1235979"></div>
+                            </div>
+                            <p class="course-access-limit hidden">Şu tarihe kadar geçerli : <span></span></p>
+                        </div>
+
+                        <div class="course-listing-subtitle" title="2 ay sürecek Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız." role="heading" aria-level="3">
+                            2 ay sürecek Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız.
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="course-listing-extra-info">
+                <div>
+
+
+                    <img class="img-circle" src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:30,height:30/https://www.filepicker.io/api/file/GsqiGFGCRmuBuel0qqF3" alt="Engin Demirog">
+                    <span class="small course-author-name">
+                        Engin Demirog
+                    </span>
+                </div>
+
+                <div class="hidden" aria-hidden="true">
+                    <div class="small course-progress ">
+                        <span class="percentage" id="percent-complete-1235979" data-course-id="1235979">
+                            %
+                        </span>
+                        <br>
+                        TAMAMLANDI
+                    </div>
+                </div>
+
+                <div>
+                    <div class="small course-price" data-include-vat-price="2675534">
+                        ÜCRETSİZ
+                    </div>
                 </div>
             </div>
-            <br>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <div data-course-id="1862827" data-course-url="/courses/enrolled/1862827" , class="course-listing">
+            <div class="row">
+                <a href="/courses/enrolled/1862827" data-role="course-box-link">
+                    <div class="col-lg-12">
+
+                        <div class="course-box-image-container">
+                            <img class="course-box-image" src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/ujZYJ3lwSOihtnbP9LsG" role="presentation">
+                        </div>
+                        <div class="course-listing-title" role="heading" aria-level="2" title="Senior Yazılım Geliştirici Yetiştirme Kampı (.NET)">
+                            Senior Yazılım Geliştirici Yetiştirme Kampı (.NET)
+                        </div>
+
+                        <div class="col-xs-12 hidden course-listing-enrolled" aria-hidden="true">
+                            <div class="progressbar ">
+                                <div class="progressbar-fill" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-labelledby="percent-complete-1862827"></div>
+                            </div>
+                            <p class="course-access-limit hidden">Şu tarihe kadar geçerli : <span></span></p>
+                        </div>
+
+                        <div class="course-listing-subtitle" title="Senior Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız." role="heading" aria-level="3">
+                            Senior Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız.
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="course-listing-extra-info">
+                <div>
+
+
+                    <img class="img-circle" src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:30,height:30/https://www.filepicker.io/api/file/GsqiGFGCRmuBuel0qqF3" alt="Engin Demirog">
+                    <span class="small course-author-name">
+                        Engin Demirog
+                    </span>
+                </div>
+
+                <div class="hidden" aria-hidden="true">
+                    <div class="small course-progress ">
+                        <span class="percentage" id="percent-complete-1862827" data-course-id="1862827">
+                            %
+                        </span>
+                        <br>
+                        TAMAMLANDI
+                    </div>
+                </div>
+
+                <div>
+                    <div class="small course-price" data-include-vat-price="4202878">
+                        ÜCRETSİZ
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <div data-course-id="2440064" data-course-url="/courses/enrolled/2440064" , class="course-listing">
+            <div class="row">
+                <a href="/courses/enrolled/2440064" data-role="course-box-link">
+                    <div class="col-lg-12">
+
+                        <div class="course-box-image-container">
+                            <img class="course-box-image" src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/We86Zc3xQy6FUqhyBJJc" role="presentation">
+                        </div>
+                        <div class="course-listing-title" role="heading" aria-level="2" title="2024 Yazılım Geliştirici Yetiştirme Kampı (C#)">
+                            2024 Yazılım Geliştirici Yetiştirme Kampı (C#)
+                        </div>
+
+                        <div class="col-xs-12 hidden course-listing-enrolled" aria-hidden="true">
+                            <div class="progressbar ">
+                                <div class="progressbar-fill" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-labelledby="percent-complete-2440064"></div>
+                            </div>
+                            <p class="course-access-limit hidden">Şu tarihe kadar geçerli : <span></span></p>
+                        </div>
+
+                        <div class="course-listing-subtitle" title="2 ay sürecek Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız." role="heading" aria-level="3">
+                            2 ay sürecek Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız.
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="course-listing-extra-info">
+                <div>
+
+
+                    <img class="img-circle" src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:30,height:30/https://www.filepicker.io/api/file/GsqiGFGCRmuBuel0qqF3" alt="Engin Demirog">
+                    <span class="small course-author-name">
+                        Engin Demirog
+                    </span>
+                </div>
+
+                <div class="hidden" aria-hidden="true">
+                    <div class="small course-progress ">
+                        <span class="percentage" id="percent-complete-2440064" data-course-id="2440064">
+                            %
+                        </span>
+                        <br>
+                        TAMAMLANDI
+                    </div>
+                </div>
+
+                <div>
+                    <div class="small course-price" data-include-vat-price="5291639">
+                        ÜCRETSİZ
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <div data-course-id="1240541" data-course-url="/courses/enrolled/1240541" , class="course-listing">
+            <div class="row">
+                <a href="/courses/enrolled/1240541" data-role="course-box-link">
+                    <div class="col-lg-12">
+
+                        <div class="course-box-image-container">
+                            <img class="course-box-image" src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://www.filepicker.io/api/file/BBLmG3XFTtm8XBTrzg4v" role="presentation">
+                        </div>
+                        <div class="course-listing-title" role="heading" aria-level="2" title="Programlamaya Giriş için Temel Kurs">
+                            Programlamaya Giriş için Temel Kurs
+                        </div>
+
+                        <div class="col-xs-12 hidden course-listing-enrolled" aria-hidden="true">
+                            <div class="progressbar ">
+                                <div class="progressbar-fill" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-labelledby="percent-complete-1240541"></div>
+                            </div>
+                            <p class="course-access-limit hidden">Şu tarihe kadar geçerli : <span></span></p>
+                        </div>
+
+                        <div class="course-listing-subtitle" title="PYTHON, JAVA, C# gibi tüm programlama dilleri için temel programlama mantığını anlaşılır örneklerle öğrenin." role="heading" aria-level="3">
+                            PYTHON, JAVA, C# gibi tüm programlama dilleri için temel programlama mantığını anlaşılır örneklerle öğrenin.
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="course-listing-extra-info">
+                <div>
+
+
+                    <img class="img-circle" src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:30,height:30/https://www.filepicker.io/api/file/GsqiGFGCRmuBuel0qqF3" alt="Engin Demirog">
+                    <span class="small course-author-name">
+                        Engin Demirog
+                    </span>
+                </div>
+
+                <div class="hidden" aria-hidden="true">
+                    <div class="small course-progress ">
+                        <span class="percentage" id="percent-complete-1240541" data-course-id="1240541">
+                            %
+                        </span>
+                        <br>
+                        TAMAMLANDI
+                    </div>
+                </div>
+
+                <div>
+                    <div class="small course-price" data-include-vat-price="2687976">
+                        ÜCRETSİZ
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
