@@ -1,4 +1,5 @@
-﻿<header class="v1-header">
+﻿@using Courses.WebUI.Extensions
+<header class="v1-header">
 
     <div class="navbar-fedora is-at-top is-signed-in" id="navbar" role="navigation">
         <div class="btstrp-container">
@@ -12,7 +13,7 @@
                     <span class="btstrp-icon-bar"></span>
                 </button>
 
-                <a class="btstrp-navbar-brand header-logo" href="/courses">
+                <a class="btstrp-navbar-brand header-logo" href="/home">
                     <img src="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=height:60/https://www.filepicker.io/api/file/4mZobU9NSRKr8UJADi4M" alt="Kodlama.io" srcset="https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=height:120/https://www.filepicker.io/api/file/4mZobU9NSRKr8UJADi4M 2x" />
                 </a>
 
@@ -24,7 +25,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="fedora-navbar-link navbar-link" href="/courses">
+                            <a class="fedora-navbar-link navbar-link" href="/home">
                                 Tüm Kurslar
                             </a>
                         </li>
@@ -40,52 +41,61 @@
                         </li>
 
 
-                        <li class="dropdown">
-                            <a aria-expanded="false" aria-controls="user-dropdown" aria-haspopup="true" href="#" class="fedora-navbar-link navbar-link dropdown-toggle open-my-profile-dropdown" data-toggle="dropdown">
-                                <img class="gravatar" src="https://s.gravatar.com/avatar/c1b3496ea2f777fa15691534d920e593?d=mm" alt="UserMailAdress" />
-                                <span class="navbar-current-user">UserFirstName UserLastName</span>
-                            </a>
-                            <ul class="dropdown-menu" id="user-dropdown">
-                                <li class="user-profile">
-                                    <a href="/current_user/profile">
-                                        Profili Düzenle
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/current_user/subscriptions">
-                                        Üyelikleri Yönet
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/current_user/purchase_history">
-                                        Purchase History
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/current_user/credit_card">
-                                        Kart bilgisi ekle veya değiştir
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/current_user/address">
-                                        Address
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/current_user/contact">
-                                        İletişim
-                                    </a>
-                                </li>
-                                <li class="user-signout">
-                                    <a href="/sign_out">
-                                        Çıkış
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+
+                        @if (!User.IsLogged())
+                        {
+                            <li>
+                                <a class="navbar-link fedora-navbar-link" href="/girisyap">
+                                    Giriş Yap
+                                </a>
+                            </li>
+                            <li>
+                                <a class="btn btn-primary pull-right btn-lg" id="header-sign-up-btn" href="/kayitol">
+                                    Kayıt Ol
+                                </a>
+                            </li>
+                        }
+                        
+                        else if (User.IsAdmin())
+                        {
+                            <li>
+                                <a asp-area="Admin" asp-controller="Main" asp-action="Index" class="navbar-link fedora-navbar-link">Yönetim Paneli</a>
+                            </li>
+
+                            <li>
+                                <a class="navbar-link fedora-navbar-link" href="/CikisYap">Çıkış Yap</a>
+                            </li>
+                        }
+
+                        else
+                        {
+                            <li class="dropdown">
+                                <a aria-expanded="false" aria-controls="user-dropdown" aria-haspopup="true" href="#" class="fedora-navbar-link navbar-link dropdown-toggle open-my-profile-dropdown" data-toggle="dropdown">
+                                    <img class="gravatar" src="https://s.gravatar.com/avatar/c1b3496ea2f777fa15691534d920e593?d=mm" alt="UserMailAdress" />
+                                    <span class="navbar-current-user">UserFirstName UserLastName</span>
+                                </a>
+                                <ul class="dropdown-menu" id="user-dropdown">
+                                    <li class="user-profile">
+                                        <a href="/current_user/profile">
+                                            Profili Düzenle
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/current_user/subscriptions">
+                                            Üyelikleri Yönet
+                                        </a>
+                                    </li>
+                                    <li class="user-signout">
+                                        <a href="/cikisyap">
+                                            Çıkış
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        }
                     </ul>
                 </div>
             </div>
         </div>
-    </div>
 </header>

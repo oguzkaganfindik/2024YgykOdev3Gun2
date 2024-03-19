@@ -2,6 +2,7 @@
 using Courses.Business.Services;
 using Courses.Business.Types;
 using Courses.Data.Entities;
+using Courses.Data.Enums;
 using Courses.Data.Repositories;
 using Microsoft.AspNetCore.DataProtection;
 
@@ -35,6 +36,7 @@ namespace Courses.Business.Managers
                 LastName = userAddDto.LastName,
                 Email = userAddDto.Email,
                 Password = _dataProtector.Protect(userAddDto.Password),
+                UserType = UserTypeEnum.User
             };
 
             _userRepository.Add(userEntity);
@@ -50,14 +52,14 @@ namespace Courses.Business.Managers
         {
             var userEntity = _userRepository.Get(x => x.Email == userLoginDto.Email);
 
-            if(userEntity is null)
+            if (userEntity is null)
             {
                 return null;
             }
 
-            var rawPassword = _dataProtector.Unprotect(userEntity.Password);
+            var rawPassword = _dataProtector.Unprotect(userEntity.Password); 
 
-            if(rawPassword == userLoginDto.Password)
+            if (rawPassword == userLoginDto.Password)
             {
                 return new UserInfoDto()
                 {
@@ -65,6 +67,7 @@ namespace Courses.Business.Managers
                     Email = userEntity.Email,
                     FirstName = userEntity.FirstName,
                     LastName = userEntity.LastName,
+                    UserType = userEntity.UserType
                 };
             }
             else

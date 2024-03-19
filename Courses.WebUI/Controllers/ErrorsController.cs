@@ -2,14 +2,14 @@
 
 namespace Courses.WebUI.Controllers
 {
-    public class CoursesController : Controller
+    public class ErrorsController : Controller
     {
-        public IActionResult List()
+        public IActionResult Error404()
         {
             return View();
         }
 
-        public IActionResult Enrolled()
+        public IActionResult Error403()
         {
             return View();
         }
