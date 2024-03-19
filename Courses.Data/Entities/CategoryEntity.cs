@@ -8,7 +8,6 @@ namespace Courses.Data.Entities
         public string Description { get; set; }
 
         // Relational Property
-
         public List<CourseEntity> Courses { get; set; }
     }
 

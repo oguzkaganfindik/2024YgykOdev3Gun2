@@ -1,0 +1,27 @@
+﻿@model LoginViewModel
+
+<main class="p-v-5-m">
+    <div class="container m-auto-xs col-4-l col-5-m col-10-xs p-h-6-l">
+        <h3 class="heading3 text-center-xs">Log in</h3>
+            <form method="post" asp-controller="Auth" asp-action="Login">
+            <div class="m-b-4-xs">
+                <div class="user-box">
+                    <label class="form-label bodyMain p-b-0-xs m-b-2-xs" asp-for="Email">Email</label>
+                    <input asp-for="Email" type="email" class="form-input p-v-1-xs p-l-2-xs p-r-4-xs col-12-xs bodyMain" required>
+                </div>
+            </div>
+            <div class="m-b-4-xs">
+
+                <label class="form-label bodyMain p-b-0-xs m-b-2-xs" asp-for="Password"></label>
+                <div class="password-container">
+                    <input asp-for="Password" type="password" class="password form-input p-v-1-xs p-l-2-xs p-r-6-xs col-12-xs bodyMain" required>
+                </div>
+                <div class="text-danger" asp-validation-summary="All">
+                </div>
+            </div>
+            <div class="dsp-flex-xs flex-justify-content-center-xs">
+                <button type="submit" class="btn-primary button p-v-2-xs p-h-5-xs m-v-3-xs col-12-xs">Log in</button>
+            </div>
+        </form>
+    </div>
+</main>

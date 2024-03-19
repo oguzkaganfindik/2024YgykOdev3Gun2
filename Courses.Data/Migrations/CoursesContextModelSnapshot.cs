@@ -22,6 +22,21 @@ namespace Courses.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("CourseEntityUserEntity", b =>
+                {
+                    b.Property<int>("CoursesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CoursesId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("CourseEntityUserEntity");
+                });
+
             modelBuilder.Entity("Courses.Data.Entities.CategoryEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -76,9 +91,6 @@ namespace Courses.Data.Migrations
                     b.Property<int>("InstructorId")
                         .HasColumnType("int");
 
-                    b.Property<int>("InstructorsId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -100,7 +112,7 @@ namespace Courses.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("InstructorsId");
+                    b.HasIndex("InstructorId");
 
                     b.ToTable("Courses");
                 });
@@ -161,16 +173,16 @@ namespace Courses.Data.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
@@ -179,9 +191,27 @@ namespace Courses.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserType")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("CourseEntityUserEntity", b =>
+                {
+                    b.HasOne("Courses.Data.Entities.CourseEntity", null)
+                        .WithMany()
+                        .HasForeignKey("CoursesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Courses.Data.Entities.UserEntity", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Courses.Data.Entities.CourseEntity", b =>
@@ -192,15 +222,15 @@ namespace Courses.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Courses.Data.Entities.InstructorEntity", "Instructors")
+                    b.HasOne("Courses.Data.Entities.InstructorEntity", "Instructor")
                         .WithMany("Courses")
-                        .HasForeignKey("InstructorsId")
+                        .HasForeignKey("InstructorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
 
-                    b.Navigation("Instructors");
+                    b.Navigation("Instructor");
                 });
 
             modelBuilder.Entity("Courses.Data.Entities.CategoryEntity", b =>
