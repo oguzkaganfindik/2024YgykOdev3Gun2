@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.DataProtection.Abstractions" Version="8.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Courses.Data\Courses.Data.csproj" />
   </ItemGroup>
 

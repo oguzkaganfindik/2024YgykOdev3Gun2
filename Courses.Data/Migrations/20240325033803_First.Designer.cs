@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Courses.Data.Migrations
 {
     [DbContext(typeof(CoursesContext))]
-    [Migration("20240319011925_First")]
+    [Migration("20240325033803_First")]
     partial class First
     {
         /// <inheritdoc />
@@ -68,6 +68,16 @@ namespace Courses.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "qwerty",
+                            IsDeleted = false,
+                            Name = "Programlama"
+                        });
                 });
 
             modelBuilder.Entity("Courses.Data.Entities.CourseEntity", b =>
@@ -85,8 +95,8 @@ namespace Courses.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
@@ -102,8 +112,8 @@ namespace Courses.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<decimal?>("UnitPrice")
                         .HasColumnType("decimal(18,2)");
@@ -118,6 +128,60 @@ namespace Courses.Data.Migrations
                     b.HasIndex("InstructorId");
 
                     b.ToTable("Courses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "2 ay sürecek Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız.",
+                            ImagePath = "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://www.filepicker.io/api/file/Zk7d1MdoSJ6cEShVbfd0",
+                            InstructorId = 2,
+                            IsDeleted = false,
+                            Name = "Yazılım Geliştirici Yetiştirme Kampı (C# + ANGULAR)",
+                            UnitPrice = 1m,
+                            UnitsInStock = 999
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Senior Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız.",
+                            ImagePath = "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/ujZYJ3lwSOihtnbP9LsG",
+                            InstructorId = 2,
+                            IsDeleted = false,
+                            Name = "Senior Yazılım Geliştirici Yetiştirme Kampı (.NET)",
+                            UnitPrice = 1m,
+                            UnitsInStock = 999
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "2 ay sürecek Yazılım Geliştirici Yetiştirme Kampımızın takip, döküman ve duyurularını buradan yapacağız.",
+                            ImagePath = "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://cdn.filestackcontent.com/We86Zc3xQy6FUqhyBJJc",
+                            InstructorId = 2,
+                            IsDeleted = false,
+                            Name = "2024 Yazılım Geliştirici Yetiştirme Kampı (C#)",
+                            UnitPrice = 1m,
+                            UnitsInStock = 999
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "PYTHON, JAVA, C# gibi tüm programlama dilleri için temel programlama mantığını anlaşılır örneklerle öğrenin.",
+                            ImagePath = "https://process.fs.teachablecdn.com/ADNupMnWyR7kCWRvm76Laz/resize=width:705/https://www.filepicker.io/api/file/BBLmG3XFTtm8XBTrzg4v",
+                            InstructorId = 2,
+                            IsDeleted = false,
+                            Name = "Programlamaya Giriş için Temel Kurs",
+                            UnitPrice = 1m,
+                            UnitsInStock = 999
+                        });
                 });
 
             modelBuilder.Entity("Courses.Data.Entities.InstructorEntity", b =>
@@ -131,31 +195,29 @@ namespace Courses.Data.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("InstructorEntity");
+                    b.ToTable("Instructors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsDeleted = false,
+                            Name = "Engin Demirog"
+                        });
                 });
 
             modelBuilder.Entity("Courses.Data.Entities.UserEntity", b =>
@@ -200,6 +262,19 @@ namespace Courses.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 7,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "admin@test.com",
+                            FirstName = "Şebnem",
+                            IsDeleted = false,
+                            LastName = "Ferah",
+                            Password = "CfDJ8FQKd0cs-OtIqI0DUu3lQttnD2iWg-bqMkB4SuNrSveVg7sCD2-FXTbvhNmEjXRB3bVHO-WA6WnmofMsMoc0ampwIS_FfvRI9ODRC1qfS1wesjX_k-ittZSElEyhXO3Pgw",
+                            UserType = 2
+                        });
                 });
 
             modelBuilder.Entity("CourseEntityUserEntity", b =>

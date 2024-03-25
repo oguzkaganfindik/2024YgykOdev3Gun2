@@ -11,28 +11,23 @@ namespace Courses.WebUI.Areas.Admin.Controllers
     public class CourseController : Controller
     {
         private readonly ICourseService _courseService;
-        private readonly ICategoryService _categoryService;
-
-        public CourseController(ICourseService courseService, ICategoryService categoryService)
+        public CourseController(ICourseService courseService)
         {
             _courseService = courseService;
-            _categoryService = categoryService;
         }
-
-        [HttpGet]
         public IActionResult List()
         {
             var courseDtoList = _courseService.GetCourses();
-
             var viewModel = courseDtoList.Select(x => new CourseListViewModel()
             {
                 Id = x.Id,
                 Name = x.Name,
+                Description = x.Description?.Length > 20 ? x.Description?.Substring(0, 20) + "..." : x.Description,
                 UnitPrice = x.UnitPrice,
                 UnitsInStock = x.UnitsInStock,
+                ImagePath = x.ImagePath?.Length > 20 ? x.ImagePath?.Substring(0, 20) + "..." : x.ImagePath,
                 CategoryName = x.CategoryName,
-                ImagePath = x.ImagePath
-
+                InstructorName = x.InstructorName,
             }).ToList();
 
             return View(viewModel);
@@ -41,7 +36,6 @@ namespace Courses.WebUI.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.Categories = _categoryService.GetCategories();
             return View("Create", new CourseFormViewModel());
         }
 
@@ -50,54 +44,60 @@ namespace Courses.WebUI.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Categories = _categoryService.GetCategories();
                 return View("Create", formData);
             }
 
             var courseAddDto = new CourseAddDto()
             {
-                Name = formData.Name,
-                Description = formData.Description,
+                Name = formData.Name.Trim(),
+                Description = formData.Description?.Trim(),
                 UnitPrice = formData.UnitPrice,
                 UnitsInStock = formData.UnitsInStock,
+                ImagePath = formData.ImagePath,
                 CategoryId = formData.CategoryId,
+                InstructorId = formData.InstructorId,
             };
 
-            _courseService.AddCourse(courseAddDto);
-            return RedirectToAction("List");
+            var result = _courseService.AddCourse(courseAddDto);
+
+            if (result)
+            {
+                return RedirectToAction("List");
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Bu isimde bir kurs zaten mevcut.";
+                return View("Create", formData);
+            }
         }
 
         [HttpGet]
         public IActionResult Update(int id)
         {
-            var updateCourseDto = _courseService.GetCourseById(id);
+            var courseDto = _courseService.GetCourse(id);
 
             var viewModel = new CourseFormViewModel()
             {
-                Id = updateCourseDto.Id,
-                Name = updateCourseDto.Name,
-                Description = updateCourseDto.Description,
-                UnitPrice = updateCourseDto.UnitPrice,
-                UnitsInStock = updateCourseDto.UnitsInStock,
-                CategoryId = updateCourseDto.CategoryId,
+                Id = courseDto.Id,
+                Name = courseDto.Name,
+                Description = courseDto.Description,
+                UnitPrice = courseDto.UnitPrice,
+                UnitsInStock = courseDto.UnitsInStock,
+                ImagePath = courseDto.ImagePath,
+                CategoryId = courseDto.CategoryId,
+                InstructorId = courseDto.InstructorId,
             };
 
-            ViewBag.ImagePath = updateCourseDto.ImagePath;
-
-            ViewBag.Categories = _categoryService.GetCategories();
             return View("Update", viewModel);
         }
-
 
         [HttpPost]
         public IActionResult Update(CourseFormViewModel formData)
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Categories = _categoryService.GetCategories();
                 return View("Update", formData);
             }
-
 
             var courseUpdateDto = new CourseUpdateDto()
             {
@@ -106,18 +106,32 @@ namespace Courses.WebUI.Areas.Admin.Controllers
                 Description = formData.Description,
                 UnitPrice = formData.UnitPrice,
                 UnitsInStock = formData.UnitsInStock,
+                ImagePath = formData.ImagePath,
                 CategoryId = formData.CategoryId,
+                InstructorId = formData.InstructorId,
             };
 
-            _courseService.UpdateCourse(courseUpdateDto);
+            var result = _courseService.UpdateCourse(courseUpdateDto);
+
+            if (!result)
+            {
+                ViewBag.ErrorMessage = "Bu isimde bir kurs zaten mevcut olduğundan, güncelleme yapamazsınız.";
+                return View("Update", formData);
+            }
+
             return RedirectToAction("List");
         }
 
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            _courseService.DeleteCourse(id);
+            var result = _courseService.DeleteCourse(id);
 
+            if (!result)
+            {
+                TempData["CourseErrorMessage"] = "İlgili kursta öğrenciler bulunduğundan silme işlemi gerçekleştirilemez.";
+
+            }
             return RedirectToAction("List");
         }
     }

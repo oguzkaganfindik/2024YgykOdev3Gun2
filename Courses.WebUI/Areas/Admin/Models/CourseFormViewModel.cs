@@ -24,6 +24,10 @@ namespace Courses.WebUI.Areas.Admin.Models
         public int CategoryId { get; set; }
 
         [Display(Name = "Kurs Görseli")]
-        public IFormFile? File { get; set; }
+        public string ImagePath { get; set; }
+
+        [Display(Name = "Eğitmen")]
+        [Required(ErrorMessage = "Bir Eğitmen seçmek zorunludur.")]
+        public int InstructorId { get; set; }
     }
 }

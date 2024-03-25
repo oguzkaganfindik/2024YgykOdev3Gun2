@@ -18,7 +18,7 @@ namespace Courses.Business.Managers
 
         public bool AddInstructor(InstructorAddDto instructorAddDto)
         {
-            var hasInstructor = _instructorRepository.GetAll(x => x.FirstName.ToLower() == instructorAddDto.FirstName.ToLower()).ToList();
+            var hasInstructor = _instructorRepository.GetAll(x => x.Name.ToLower() == instructorAddDto.Name.ToLower()).ToList();
 
             if (hasInstructor.Any())
             {
@@ -27,11 +27,7 @@ namespace Courses.Business.Managers
 
             var entity = new InstructorEntity()
             {
-                FirstName = instructorAddDto.FirstName,
-                LastName = instructorAddDto.LastName,
-                Email = instructorAddDto.Email,
-                Password = instructorAddDto.Password,
-                
+                Name = instructorAddDto.Name,
             };
 
             _instructorRepository.Add(entity);
@@ -53,14 +49,11 @@ namespace Courses.Business.Managers
 
         public List<InstructorListDto> GetInstructors()
         {
-            var instructorEntities = _instructorRepository.GetAll().OrderBy(x => x.FirstName);
+            var instructorEntities = _instructorRepository.GetAll().OrderBy(x => x.Name);
             var instructorDtoList = instructorEntities.Select(x => new InstructorListDto()
             {
                 Id = x.Id,
-                FirstName = x.FirstName,
-                LastName = x.LastName,
-                Email = x.Email,
-                Password = x.Password,
+                Name = x.Name
 
             }).ToList();
 
@@ -74,10 +67,7 @@ namespace Courses.Business.Managers
             var instructorUpdateDto = new InstructorUpdateDto()
             {
                 Id = entity.Id,
-                FirstName = entity.FirstName,
-                LastName = entity.LastName,
-                Email = entity.Email,
-                Password = entity.Password,
+                Name = entity.Name
             };
 
             return instructorUpdateDto;
@@ -85,7 +75,7 @@ namespace Courses.Business.Managers
 
         public bool UpdateInstructor(InstructorUpdateDto instructorUpdateDto)
         {
-            var hasInstructor = _instructorRepository.GetAll(x => x.FirstName.ToLower() == instructorUpdateDto.FirstName.ToLower() && x.Id != instructorUpdateDto.Id).ToList();
+            var hasInstructor = _instructorRepository.GetAll(x => x.Name.ToLower() == instructorUpdateDto.Name.ToLower() && x.Id != instructorUpdateDto.Id).ToList();
 
             if (hasInstructor.Any())
             {
@@ -94,11 +84,7 @@ namespace Courses.Business.Managers
 
             var entity = _instructorRepository.GetById(instructorUpdateDto.Id);
 
-            entity.FirstName = instructorUpdateDto.FirstName;
-            entity.LastName = instructorUpdateDto.LastName;
-            entity.Email = instructorUpdateDto.Email;
-            entity.Password = instructorUpdateDto.Password;
-
+            entity.Name = instructorUpdateDto.Name;
 
             _instructorRepository.Update(entity);
 

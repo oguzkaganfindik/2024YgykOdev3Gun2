@@ -1,8 +1,8 @@
-﻿@model List<CourseListViewModel>
+﻿@model List<InstructorListViewModel>
 
 <div>
-    <div class="float-start">  <h2>Kurslar</h2>    </div>
-    <div class="float-end"> <a asp-controller="Course" asp-action="Create" class="btn btn-warning fw-bold">Yeni Course</a></div>
+    <div class="float-start"> <h2>Eğitmenler</h2> </div>
+    <div class="float-end"> <a asp-controller="Instructor" asp-action="Create" class="btn btn-warning fw-bold">Yeni Eğitmen</a></div>
 </div>
 
 <div style="padding-top: 75px">
@@ -11,12 +11,7 @@
 
         <thead class="table-secondary">
             <tr>
-                <th>Course Adı</th>
-                <th>Açıklaması</th>
-                <th>Kurs Ücreti</th>
-                <th>Kurs Stok miktarı</th>
-                <th>Image Path</th>
-                <th>Kategori</th>
+                <th style="width:150px"></th>
                 <th>Eğitmen Adı</th>
                 <th></th>
             </tr>
@@ -26,16 +21,11 @@
             @foreach (var item in Model)
             {
                 <tr>
+                    <td>@item.Id</td>
                     <td>@item.Name</td>
-                    <td>@item.Description</td>
-                    <td>@item.UnitPrice</td>
-                    <td>@item.UnitsInStock</td>
-                    <td>@item.ImagePath"</td>
-                    <td>@item.CategoryName</td>
-                    <td>@item.InstructorName</td>
                     <td>
-                        <a asp-controller="Course" asp-action="Update" asp-route-id="@item.Id" class="btn btn-sm btn-primary fw-bold">Düzenle</a>
-                        <a asp-controller="Course" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger fw-bold">Sil</a>
+                        <a asp-controller="Instructor" asp-action="Update" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Düzenle</a>
+                        <a href="#" class="btn btn-sm btn-danger btnDelete" data-id="@item.Id">Sil</a>
                     </td>
                 </tr>
             }
@@ -43,7 +33,6 @@
 
 
     </table>
-
 
 
 </div>
@@ -80,12 +69,12 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
-                        url: '/admin/course/delete/' + courseId,
+                        url: '/admin/Instructor/delete/' + InstructorId,
                         method: 'GET'
                     }).done(function () {
                         Swal.fire({
                             title: "Silindi!",
-                            text: "kurs başarıyla silindi.",
+                            text: "Eğitmen başarıyla silindi.",
                             icon: "success",
                             OnOpen: function () {
                                 let audplay = new Audio(soundfile)
@@ -95,7 +84,7 @@
                     }).fail(function () {
                         Swal.fire({
                             title: "Hata!",
-                            text: "kurs silinirken bir hata ile karşılaşıldı.",
+                            text: "Eğitmen silinirken bir hata ile karşılaşıldı.",
                             icon: "error"
                         });
                     })
@@ -105,12 +94,12 @@
         })
 
 
-        if (@(string.IsNullOrWhiteSpace(TempData["CourseErrorMessage"]?.ToString()) ? "false" : "true")) {
+        if (@(string.IsNullOrWhiteSpace(TempData["InstructorErrorMessage"]?.ToString()) ? "false" : "true")) {
             Swal.fire({
                 icon: "error",
                 title: "Hata!",
-                text: @Html.Raw(Json.Serialize(TempData["CourseErrorMessage"]))
-                    });
+                text: @Html.Raw(Json.Serialize(TempData["InstructorErrorMessage"]))
+                            });
         }
     </script>
 }
