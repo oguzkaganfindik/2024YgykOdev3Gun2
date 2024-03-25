@@ -4,10 +4,7 @@ namespace Courses.Data.Entities
 {
     public class InstructorEntity :  BaseEntity
     {
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Name { get; set; }
         public List<CourseEntity> Courses { get; set; }
     }
 
@@ -16,11 +13,8 @@ namespace Courses.Data.Entities
         public override void Configure(EntityTypeBuilder<InstructorEntity> builder)
         {
 
-            //builder.Property(x => x.FirstName)
-            //    .HasMaxLength(40);
-
-            //builder.Property(x => x.LastName)
-            //    .IsRequired(false);
+            builder.Property(x => x.Name)
+                .HasMaxLength(40);
 
             base.Configure(builder);
         }

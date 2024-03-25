@@ -109,7 +109,7 @@ namespace Courses.WebUI.Areas.Admin.Controllers
 
             if (!result)
             {
-                TempData["CategoryErrorMessage"] = "İlgili kategoride ürünler bulunduğundan silme işlemi gerçekleştirilemez.";
+                TempData["CategoryErrorMessage"] = "İlgili kategoride kurslar bulunduğundan silme işlemi gerçekleştirilemez.";
 
             }
             return RedirectToAction("List");

@@ -8,33 +8,72 @@ namespace Courses.Business.Managers
     public class CourseManager : ICourseService
     {
         private readonly IRepository<CourseEntity> _courseRepository;
+        private readonly IRepository<InstructorEntity> _instructorRepository;
+        private readonly IRepository<CategoryEntity> _categoryRepository;
 
-        public CourseManager(IRepository<CourseEntity> courseRepository)
+        public CourseManager(IRepository<CourseEntity> courseRepository, IRepository<InstructorEntity> instructorRepository, IRepository<CategoryEntity> categoryRepository)
         {
             _courseRepository = courseRepository;
+            _instructorRepository = instructorRepository;
+            _categoryRepository = categoryRepository;
         }
 
-        public void AddCourse(CourseAddDto courseAddDto)
+        public bool AddCourse(CourseAddDto courseAddDto)
         {
+            var hasCourse = _courseRepository.GetAll(x => x.Name.ToLower() == courseAddDto.Name.ToLower()).ToList();
+
+            if (hasCourse.Any())
+            {
+                return false;
+            }
+
             var entity = new CourseEntity()
             {
                 Name = courseAddDto.Name,
                 Description = courseAddDto.Description,
                 UnitPrice = courseAddDto.UnitPrice,
                 UnitsInStock = courseAddDto.UnitsInStock,
-                CategoryId = courseAddDto.CategoryId,
                 ImagePath = courseAddDto.ImagePath,
+                CategoryId = courseAddDto.CategoryId,
+                InstructorId = courseAddDto.InstructorId,
             };
 
             _courseRepository.Add(entity);
+            return true;
         }
 
-        public void DeleteCourse(int id)
+        public bool DeleteCourse(int id)
         {
+            var firstCourse = _courseRepository.Get(x => x.CategoryId == id);
+
+            if (firstCourse is not null)
+            {
+                return false;
+            }
+
             _courseRepository.Delete(id);
+            return true;
         }
 
-        public CourseUpdateDto GetCourseById(int id)
+        public List<CourseListDto> GetCourses()
+        {
+            var courseEntities = _courseRepository.GetAll().OrderBy(x => x.Name);
+            var courseDtoList = courseEntities.Select(x => new CourseListDto()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Description = x.Description,
+                UnitPrice = x.UnitPrice,
+                UnitsInStock = x.UnitsInStock,
+                ImagePath = x.ImagePath,
+                CategoryName = x.Category.Name,
+                InstructorName = x.Instructor.Name,
+            }).ToList();
+
+            return courseDtoList;
+        }
+
+        public CourseUpdateDto GetCourse(int id)
         {
             var entity = _courseRepository.GetById(id);
 
@@ -45,70 +84,36 @@ namespace Courses.Business.Managers
                 Description = entity.Description,
                 UnitPrice = entity.UnitPrice,
                 UnitsInStock = entity.UnitsInStock,
-                CategoryId = entity.CategoryId,
                 ImagePath = entity.ImagePath,
+                CategoryId = entity.CategoryId,
+                InstructorId = entity.InstructorId,
             };
 
             return courseUpdateDto;
         }
 
-        public List<CourseListDto> GetCourses()
+        public bool UpdateCourse(CourseUpdateDto courseUpdateDto)
         {
-            var courseEntites = _courseRepository.GetAll().OrderBy(x => x.Category.Name).ThenBy(x => x.Name);
+            var hasCourse = _courseRepository.GetAll(x => x.Name.ToLower() == courseUpdateDto.Name.ToLower() && x.Id != courseUpdateDto.Id).ToList();
 
-
-            var courseDtoList = courseEntites.Select(x => new CourseListDto()
+            if (hasCourse.Any())
             {
-                Id = x.Id,
-                Name = x.Name,
-                UnitPrice = x.UnitPrice,
-                UnitsInStock = x.UnitsInStock,
-                CategoryName = x.Category.Name,
-                ImagePath = x.ImagePath,
-            }).ToList();
-
-            return courseDtoList;
-        }
-
-        public List<CourseListDto> GetCoursesByCategoryId(int? categoryId = null)
-        {
-            if (categoryId.HasValue) 
-            {
-                var courseEntities = _courseRepository.GetAll(x => x.CategoryId == categoryId).OrderBy(x => x.Name);
-
-
-                var courseDtos = courseEntities.Select(x => new CourseListDto()
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    UnitPrice = x.UnitPrice,
-                    UnitsInStock = x.UnitsInStock,
-                    CategoryName = x.Category.Name,
-                    ImagePath = x.ImagePath
-                }).ToList();
-
-                return courseDtos;
+                return false;
             }
 
-            return GetCourses(); 
-
-
-        }
-
-        public void UpdateCourse(CourseUpdateDto courseUpdateDto)
-        {
             var entity = _courseRepository.GetById(courseUpdateDto.Id);
 
             entity.Name = courseUpdateDto.Name;
             entity.Description = courseUpdateDto.Description;
-            entity.UnitPrice = courseUpdateDto.UnitPrice;
-            entity.UnitsInStock = courseUpdateDto.UnitsInStock;
-            entity.CategoryId = courseUpdateDto.CategoryId;
-
-            if(courseUpdateDto.ImagePath != "")
-            entity.ImagePath = courseUpdateDto.ImagePath;
+            entity.UnitPrice = entity.UnitPrice;
+            entity.UnitsInStock = entity.UnitsInStock;
+            entity.ImagePath = entity.ImagePath;
+            entity.CategoryId = entity.CategoryId;
+            entity.InstructorId = entity.InstructorId;
 
             _courseRepository.Update(entity);
+
+            return true;
         }
     }
 }

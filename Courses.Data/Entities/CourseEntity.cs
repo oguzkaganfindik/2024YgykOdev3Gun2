@@ -18,7 +18,7 @@ namespace Courses.Data.Entities
         public List<UserEntity> Users { get; set; }
         public CategoryEntity Category { get; set; }
         public InstructorEntity Instructor { get; set; }
-        
+
     }
 
     public class CourseConfiguration : BaseConfiguration<CourseEntity>
@@ -26,10 +26,10 @@ namespace Courses.Data.Entities
         public override void Configure(EntityTypeBuilder<CourseEntity> builder)
         {
             builder.Property(x => x.Name)
-                .HasMaxLength(50);
+                .HasMaxLength(500);
 
             builder.Property(x => x.Description)
-                .HasMaxLength(200)
+                .HasMaxLength(500)
                 .IsRequired(false);
 
             builder.Property(x => x.UnitPrice)

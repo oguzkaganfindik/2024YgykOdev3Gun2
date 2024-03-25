@@ -10,7 +10,7 @@ namespace Courses.Data.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public UserTypeEnum UserType { get; set; }
-        public List<CourseEntity> Courses { get; set; }
+        public List<CourseEntity> Courses { get; set; } = new List<CourseEntity>();
 
     }
 
